@@ -13,12 +13,19 @@ export const CardContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 0 72px;
+  max-width: 100%;
+`;
+export const CardWapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 `;
 export const CardInfo = styled.div`
   display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  gap: 16px;
+  flex-direction: row; 
+  flex-wrap: nowrap;    
+  gap: 60px;           
   margin-top: 16px;
 `;

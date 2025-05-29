@@ -1,24 +1,52 @@
 import styled from "styled-components";
 
-export const CardContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 24px;
-  max-width: 100%;
-  margin: 0 auto;
+export const CardInner = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  transform-origin: center center; 
 `;
 
-export const Card = styled.div`
+export const CardWrapper = styled.div`
+  perspective: 1000px;
   width: 200px;
   height: 320px;
+  margin: 16px 0;
+  display: inline-block;
+  vertical-align: top;
+  &:hover ${CardInner} {
+    transform: rotateY(180deg);
+  }
+`;
+
+export const CardFront = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
   background: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  margin: 16px 0;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+export const CardBack = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: rotateY(180deg);
 `;
 
 export const CardImage = styled.div`
@@ -35,7 +63,7 @@ export const CardImage = styled.div`
 export const TitleHashtag = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start; 
+  align-items: flex-start;
   width: 100%;
 `;
 
@@ -54,10 +82,17 @@ export const CreateInfo = styled.div`
   margin-top: 8px;
   width: 100%;
   display: flex;
-  justify-content: flex-end; 
+  justify-content: flex-end;
 `;
 
 export const CreateDate = styled.span`
   color: #818181;
   font-size: 0.9rem;
+`;
+
+export const Content = styled.div`
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+  word-break: keep-all;
 `;

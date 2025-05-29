@@ -1,7 +1,7 @@
 import React from "react";
 import HomeBookInformationCard from "../../components/HomeBookInformationCard/HomeBookInformationCard";
 import { SafeView, Title, CardRow, CardContainer } from "./styles";
-import mockBooks from "../../mock/mockBook";
+import mockBooks from "../../mock/MockBook";
 import Fab from "@mui/material/Fab";
 import CreateIcon from "@mui/icons-material/Create";
 import { useNavigate } from "react-router-dom";

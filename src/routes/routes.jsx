@@ -5,6 +5,7 @@ import Header from "../layouts/Header/Header";
 import BookShelf from "../pages/BookShelf/BookShelf";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
+import MyPage from "../pages/MyPage/MyPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -48,6 +49,15 @@ const router = createBrowserRouter([
       <>
         <Header />
         <SignUp />
+      </>
+    ),
+  },
+      {
+    path: "/mypage",
+    element: (
+      <>
+        <Header />
+        <MyPage />
       </>
     ),
   },

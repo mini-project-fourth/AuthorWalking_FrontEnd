@@ -1,6 +1,6 @@
 import React from "react";
 import BookInformationCard from "../../components/BookInformationCard/BookInformationCard";
-import mockBook from "../../mock/mockBook";
+import mockBook from "../../mock/MockBook";
 
 const BookShelf = () => {
   return (

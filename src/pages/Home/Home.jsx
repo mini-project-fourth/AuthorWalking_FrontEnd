@@ -1,34 +1,49 @@
-import React, { useState } from "react";
-import  generateImage  from "../../apis/GenerateImage";
+import React from "react";
+import HomeBookInformationCard from "../../components/HomeBookInformationCard/HomeBookInformationCard";
+import { SafeView, Title, CardRow, CardContainer } from "./styles";
+import mockBooks from "../../mock/MockBook";
+import Fab from "@mui/material/Fab";
+import CreateIcon from "@mui/icons-material/Create";
+import { useNavigate } from "react-router-dom";
+
+const chunkArray = (array, size) => {
+  const result = [];
+  for (let i = 0; i < array.length; i += size) {
+    result.push(array.slice(i, i + size));
+  }
+  return result;
+};
 
 const Home = () => {
-  const [imageUrl, setImageUrl] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  const popularPosts = [
-    { id: 1, title: "봄날의 산책", author: "김작가" },
-    { id: 2, title: "나만의 글쓰기 비법", author: "이작가" },
-    { id: 3, title: "창작의 고통과 즐거움", author: "박작가" },
-  ];
-
+  const navigate = useNavigate();
+  const chunkedBooks = chunkArray(mockBooks, 4);
 
   return (
-    <div style={{ maxWidth: 700, margin: "40px auto", padding: 24 }}>
-      <h2>인기 글</h2>
-      <ul>
-        {popularPosts.map((post) => (
-          <li key={post.id} style={{ margin: "12px 0" }}>
-            <strong>{post.title}</strong>{" "}
-            <span style={{ color: "#888" }}>by {post.author}</span>
-          </li>
+    <SafeView>
+      <Title>나의 책장</Title>
+      <CardContainer>
+        {chunkedBooks.map((books, index) => (
+          <CardRow key={index}>
+            {books.map((book, bookIndex) => (
+              <HomeBookInformationCard key={bookIndex} book={book} />
+            ))}
+          </CardRow>
         ))}
-      </ul>
-      <hr style={{ margin: "32px 0" }} />
-      <h2>오늘의 한 줄</h2>
-      <blockquote style={{ fontStyle: "italic", color: "#1976d2" }}>
-        "글을 쓰는 것은 또 다른 나를 만나는 여행이다."
-      </blockquote>
-    </div>
+      </CardContainer>
+      <Fab
+        color="primary"
+        aria-label="add"
+        sx={{
+          position: "fixed",
+          bottom: 70,
+          right: 70,
+          zIndex: 1000,
+        }}
+        onClick={() => navigate("/write")}
+      >
+        <CreateIcon />
+      </Fab>
+    </SafeView>
   );
 };
 

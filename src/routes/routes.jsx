@@ -1,12 +1,14 @@
-import { createBrowserRouter } from 'react-router-dom';
-import Home from '../pages/Home/Home';
-import Write from '../pages/Write/Write';
-import Header from '../layouts/Header/Header';
-import BookShelf from '../pages/BookShelf/BookShelf';
-
+import { createBrowserRouter } from "react-router-dom";
+import Home from "../pages/Home/Home";
+import Write from "../pages/Write/Write";
+import Header from "../layouts/Header/Header";
+import BookShelf from "../pages/BookShelf/BookShelf";
+import Login from "../pages/Login/Login";
+import SignUp from "../pages/SignUp/SignUp";
+import MyPage from "../pages/MyPage/MyPage";
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: (
       <>
         <Header />
@@ -15,7 +17,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/write',
+    path: "/write",
     element: (
       <>
         <Header />
@@ -24,15 +26,41 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/bookshelf',
-    element:(
+    path: "/bookshelf",
+    element: (
       <>
         <Header />
-        <BookShelf/>
+        <BookShelf />
       </>
-    )
+    ),
   },
-
+  {
+    path: "/login",
+    element: (
+      <>
+        <Header />
+        <Login />
+      </>
+    ),
+  },
+    {
+    path: "/signup",
+    element: (
+      <>
+        <Header />
+        <SignUp />
+      </>
+    ),
+  },
+      {
+    path: "/mypage",
+    element: (
+      <>
+        <Header />
+        <MyPage />
+      </>
+    ),
+  },
 ]);
 
 export default router;

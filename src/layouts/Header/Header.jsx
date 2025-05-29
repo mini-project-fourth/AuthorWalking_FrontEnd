@@ -10,18 +10,15 @@ const Header = () => {
   return (
     <AppBarStyled>
       <ToolbarStyled>
-        <Logo>
+        <Logo onClick={() => navigate('/')}>
           <LogoImage src={logoImg} alt="Logo" onClick={() => navigate('/')} />
         </Logo>
         <NavMenu>
           <NavButton onClick={() => navigate('/')}>홈</NavButton>
-          <NavButton onClick={() => navigate('/write')}>글쓰기</NavButton>
-          <NavButton onClick={() => navigate('/bookshelf')}>내 서재</NavButton>
           <NavButton onClick={() => navigate('/mypage')}>내 정보</NavButton>
         </NavMenu>
         <ProfileSection>
-          <Avatar alt="profile" src="" />
-          <NavButton>로그인</NavButton>
+          <NavButton onClick={()=> navigate('/login')}>로그인</NavButton>
         </ProfileSection>
       </ToolbarStyled>
     </AppBarStyled>

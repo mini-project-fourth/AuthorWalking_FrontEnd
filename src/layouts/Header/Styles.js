@@ -12,7 +12,7 @@ export const AppBarStyled = styled(AppBar)`
 
 export const ToolbarStyled = styled(Toolbar)`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   min-height: 60px;
   padding-left: 16px !important;
@@ -22,7 +22,7 @@ export const ToolbarStyled = styled(Toolbar)`
 export const Logo = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; // 좌측 정렬
   font-size: 1.5rem;
   font-weight: bold;
   color: #000000;
@@ -43,6 +43,7 @@ export const NavMenu = styled.nav`
   display: flex;
   gap: 24px;
   align-items: center;
+  margin-left: auto; // 우측 끝으로 이동
 `;
 
 export const NavButton = styled(Button)`

@@ -22,14 +22,27 @@ const Home = () => {
     <SafeView>
       <Title>나의 책장</Title>
       <CardContainer>
-      {chunkedBooks.map((books, index) => (
-        <CardRow key={index}>
-          {books.map((book, bookIndex) => (
-            <HomeBookInformationCard key={bookIndex} book={book} />
-          ))}
-        </CardRow>
-      ))}
+        {chunkedBooks.map((books, index) => (
+          <CardRow key={index}>
+            {books.map((book, bookIndex) => (
+              <HomeBookInformationCard key={bookIndex} book={book} />
+            ))}
+          </CardRow>
+        ))}
       </CardContainer>
+      <Fab
+        color="primary"
+        aria-label="add"
+        sx={{
+          position: "fixed",
+          bottom: 70,
+          right: 70,
+          zIndex: 1000,
+        }}
+        onClick={() => navigate("/write")}
+      >
+        <CreateIcon />
+      </Fab>
     </SafeView>
   );
 };

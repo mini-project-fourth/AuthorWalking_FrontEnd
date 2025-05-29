@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import generateImage from "../../apis/GenerateImage";
-import { WriteContainer, WriteForm, WriteFormGroup, WriteInput, WriteTextArea, WriteSubmit, WriteIconLabel, WriteIcon } from './styles';
+import { WriteContainer, WriteForm, WriteTitle, WriteTextArea, WriteSubmit, DivHr } from './styles';
 import handleGenerateImage from "../../hooks/hooks";
 const Write = () => {
   const [imageUrl, setImageUrl] = useState(null);
@@ -26,34 +26,22 @@ const handleGenerateImage = async () => {
   return (
     <WriteContainer>
       <WriteForm>
-        {imageUrl && (
-          <div style={{ width: "70%", height: "70%", marginBottom: 16 }}>
-            <img src={imageUrl} alt="생성된 이미지" style={{ width: "100%", height: "50%", borderRadius: 8 }} />
-          </div>
-        )}
-        <WriteFormGroup>
-          <WriteIconLabel htmlFor="fileInput">
-            <WriteIcon>＋</WriteIcon>
-          </WriteIconLabel>
-          <input type="file" id="fileInput" style={{ display: "none" }} />
-          <WriteInput
+        <WriteTitle
             type="text"
-            placeholder="제목을 입력해주세요!"
+            placeholder="Title"
             autoFocus={true}
             value={title}
             onChange={e => setTitle(e.target.value)}
           />
-        </WriteFormGroup>
-        <WriteFormGroup>
-          <WriteTextArea
-            placeholder="내용을 입력해주세요!"
+        <DivHr />
+        <WriteTextArea
+            placeholder="Content"
             type="text"
             value={content}
             onChange={e => setContent(e.target.value)}
-          />
-        </WriteFormGroup>
+        />
         <WriteSubmit type="button" onClick={handleGenerateImage} disabled={loading}>
-          {loading ? "이미지 생성 중..." : "이미지 생성"}
+          {loading ? "이미지 생성 중..." : "게시글 업로드"}
         </WriteSubmit>
       </WriteForm>
     </WriteContainer>

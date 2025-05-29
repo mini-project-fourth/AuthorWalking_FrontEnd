@@ -1,15 +1,21 @@
-const HomeBookInformationCard = () => {
+import React from "react";
+import { Card, CardImage, TitleHashtag, Title, Hashtag, CreateInfo, CreateDate } from "./styles";
+
+const HomeBookInformationCard = ({ book }) => {
+  if (!book) return null;
+
   return (
     <Card>
-      <CardImage></CardImage>
+      <CardImage style={{ backgroundImage: `url(${book.cover_image_url})`, backgroundSize: "cover" }} />
       <TitleHashtag>
-        <Title>Book Title</Title>
-        <Hashtag>#hashtag</Hashtag>
+        <Title>{book.title}</Title>
+        <Hashtag>{book.hashtag}</Hashtag>
       </TitleHashtag>
       <CreateInfo>
-        <CreateDate>등록일: 2023-10-01</CreateDate>
+        <CreateDate>{new Date(book.create_at).toLocaleDateString()}</CreateDate>
       </CreateInfo>
     </Card>
   );
 };
+
 export default HomeBookInformationCard;

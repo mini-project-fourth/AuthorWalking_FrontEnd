@@ -69,6 +69,47 @@ const mockBooks = [
     update_at: "2023-11-02T12:00:00Z",
     hashtag: "#hashtag2",
   },
+    {
+    book_id: "7",
+    title: "두번째 책",
+    author: "홍길동",
+    content: "두번째 내용입니다.",
+    cover_image_url: "https://example.com/second-book.jpg",
+    create_at: "2023-11-01T12:00:00Z",
+    update_at: "2023-11-02T12:00:00Z",
+    hashtag: "#hashtag2",
+  },
+    {
+    book_id: "7",
+    title: "두번째 책",
+    author: "홍길동",
+    content: "두번째 내용입니다.",
+    cover_image_url: "https://example.com/second-book.jpg",
+    create_at: "2023-11-01T12:00:00Z",
+    update_at: "2023-11-02T12:00:00Z",
+    hashtag: "#hashtag2",
+  },
+    {
+    book_id: "7",
+    title: "두번째 책",
+    author: "홍길동",
+    content: "두번째 내용입니다.",
+    cover_image_url: "https://example.com/second-book.jpg",
+    create_at: "2023-11-01T12:00:00Z",
+    update_at: "2023-11-02T12:00:00Z",
+    hashtag: "#hashtag2",
+  },
+    {
+    book_id: "7",
+    title: "두번째 책",
+    author: "홍길동",
+    content: "두번째 내용입니다.",
+    cover_image_url: "https://example.com/second-book.jpg",
+    create_at: "2023-11-01T12:00:00Z",
+    update_at: "2023-11-02T12:00:00Z",
+    hashtag: "#hashtag2",
+  },
+  
 ];
 
 export default mockBooks;

@@ -4,7 +4,7 @@ import { SafeView, Title, CardRow, CardContainer } from "./styles";
 import mockBooks from "../../mock/MockBook";
 import Fab from "@mui/material/Fab";
 import CreateIcon from "@mui/icons-material/Create";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const chunkArray = (array, size) => {
   const result = [];
@@ -15,8 +15,13 @@ const chunkArray = (array, size) => {
 };
 
 const Home = () => {
+  const location = useLocation();
   const navigate = useNavigate();
-  const chunkedBooks = chunkArray(mockBooks, 4);
+
+  const newBook = location.state;
+  const bookToShow = newBook ? [newBook, ...mockBooks] : mockBooks
+
+  const chunkedBooks = chunkArray(bookToShow, 4);
 
   return (
     <SafeView>

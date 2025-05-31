@@ -6,6 +6,7 @@ import BookShelf from "../pages/BookShelf/BookShelf";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import MyPage from "../pages/MyPage/MyPage";
+import View from "../pages/View/View";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -52,7 +53,7 @@ const router = createBrowserRouter([
       </>
     ),
   },
-      {
+  {
     path: "/mypage",
     element: (
       <>
@@ -61,6 +62,24 @@ const router = createBrowserRouter([
       </>
     ),
   },
+  {
+    path: "books/:id",
+    element: (
+      <>
+        <Header />
+        <View />
+      </>
+    )
+  },
+  {
+    path: "books/:id/edit",
+    element: (
+      <>
+        <Header />
+        <Write />
+      </>
+    )
+  }
 ]);
 
 export default router;

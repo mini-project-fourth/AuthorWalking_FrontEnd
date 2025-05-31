@@ -1,10 +1,14 @@
 import React from "react";
 import {Card, CoverImage, Title, Author, Content, DateInfo} from "./styles";
+import { useNavigate } from "react-router-dom";
 
 const BookInformationCard = ({ book }) => {
   return (
-    <Card>
-      <CoverImage src={book.cover_image_url} alt={book.title} />
+    <Card >
+      <CoverImage 
+        src={book.cover_image_url} 
+        alt={book.title} 
+      />
       <Title>{book.title}</Title>
       <Author>by {book.author}</Author>
       <Content>{book.content}</Content>

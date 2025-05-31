@@ -13,7 +13,7 @@ export const postBook = async(book) => {
 export const getBook = async(bookId) => {
     try{
         const res = await axios.get(`http://localhost:8080/books/${bookId}`);
-        console.log(res);
+        return res.data;
     } catch(e){
         console.error("getBookError: ", e);
     }

@@ -45,11 +45,11 @@ const View = () => {
                 {showDropdownMenu && (
                 <DropdownMenuContainer onClick={(e) => e.stopPropagation()}>
                   <DropdownMenuBtn onClick={()=> {
-                      navigate(`/books/${book.book_id}/edit`, { state: {book:book} })
+                      navigate(`/books/${book.id}/edit`, { state: {book:book} })
                   }}>수정하기</DropdownMenuBtn>
                   <DropdownMenuBtn 
                     onClick={()=> {
-                      navigate(`/books/${book.book_id}/edit`)
+                      navigate(`/books/${book.id}/edit`)
                     }}
                     style={{color:'#E10B0B'}}
                     >삭제하기</DropdownMenuBtn>

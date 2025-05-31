@@ -24,6 +24,7 @@ export const WriteTools = styled.div`
   background: #EFEFEF;
   display: flex;
   justify-content: end;
+  padding: 4px 12px;
   border-radius: 18px;
   position: relative;
 `
@@ -39,24 +40,29 @@ export const DropdownMenuContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 22px;
   position: absolute;
   top: 24px;
   right: 0;
   border: #434343 0.3px solid;
   background: white;
   border-radius: 18px;
+  padding: 22px;
 `
 
 export const DropdownMenuBtn = styled.button`
+  display: flex;
+  align-content: center;
   background: transparent;
   border: none;
   padding: 4px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
 `
-// Dropdown menu 안 메뉴 버튼 만들기!!!
+
+export const DropdownMenuTitle = styled.p`
+  margin-left: 4px;
+`
 
 export const WriteTitle = styled.input`
   height: 80px;
@@ -67,10 +73,11 @@ export const WriteTitle = styled.input`
   outline: none;
   background-color: transparent;
   cursor: default;
+  padding: 8px 4px;
 `;
 
 export const WriteTextArea = styled.textarea`
-  height: 60%;
+  height: 100%;
   padding: 12px;
   font-size: 18px;
   border: none;
@@ -78,6 +85,23 @@ export const WriteTextArea = styled.textarea`
   resize: none; 
   background-color: transparent;
   cursor: default;
+  overflow: auto;
+  resize: vertical;
+
+  &::-webkit-scrollbar {
+    width: 8px; // 스크롤바 너비
+  }
+
+  &::-webkit-scrollbar-track {
+    background: none;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(102, 102, 102, 0.76)  /* 스크롤바 색 */
+    border-radius: 4px;
+    border: none;
+  }
 `;
 
 export const WriteSubmit = styled.button`

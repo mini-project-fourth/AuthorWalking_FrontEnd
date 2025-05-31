@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { WriteContainer, WriteForm, WriteTitle, DivHr, WriteTextArea, WriteTools, DropdownMenuBtn, DropdownMenuContainer, OpenDropdownMenuBtn } from "./styles";
+import { WriteContainer, WriteForm, WriteTitle, DivHr, WriteTextArea, WriteTools, DropdownMenuBtn, DropdownMenuContainer, OpenDropdownMenuBtn, DropdownMenuTitle } from "./styles";
 import { deleteBook } from "../../apis/Book";
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 const View = () => {
     const navigate = useNavigate();
@@ -42,19 +45,36 @@ const View = () => {
                   setShowDropdownMenu(false)
                 }}
               >
-                <OpenDropdownMenuBtn>더보기</OpenDropdownMenuBtn>
+                <OpenDropdownMenuBtn>
+                  <MoreHorizIcon
+                    sx={{
+                      fontSize: 'large',
+                    }}></MoreHorizIcon>
+                </OpenDropdownMenuBtn>
                 {showDropdownMenu && (
                 <DropdownMenuContainer onClick={(e) => e.stopPropagation()}>
                   <DropdownMenuBtn onClick={()=> {
                       navigate(`/books/${book.id}/edit`, { state: {book:book} })
-                  }}>수정하기</DropdownMenuBtn>
+                  }}>
+                    <EditIcon 
+                      sx={{fontSize: 'large', marginRight: '3px', marginLeft: '2px'}}/>
+                    <DropdownMenuTitle>
+                      수정하기
+                    </DropdownMenuTitle>
+                  </DropdownMenuBtn>
                   <DropdownMenuBtn 
                     onClick={()=> {
                       deleteBook(book.id)
                       navigate(`/`)
                     }}
                     style={{color:'#E10B0B'}}
-                    >삭제하기</DropdownMenuBtn>
+                    >
+                      <DeleteForeverIcon />
+                      <DropdownMenuTitle 
+                        sx={{fontSize: 'medium'}}>
+                        삭제하기
+                      </DropdownMenuTitle>
+                  </DropdownMenuBtn>
                 </DropdownMenuContainer>
                 )}
               </div>

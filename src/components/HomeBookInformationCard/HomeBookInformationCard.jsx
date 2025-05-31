@@ -1,5 +1,5 @@
 import React from "react";
-import { CardWrapper, CardInner, CardFront, CardBack, CardImage, TitleHashtag, Title, Hashtag, CreateInfo, CreateDate, Content } from "./styles";
+import { CardWrapper, CardInner, CardFront, CardBack, CardImage, TitleHashtag, Title, Hashtag, CreateInfo, CreateDate, Content, HashtagWrapper } from "./styles";
 import { useNavigate } from "react-router-dom";
 
 const HomeBookInformationCard = ({ book }) => {
@@ -18,10 +18,16 @@ const HomeBookInformationCard = ({ book }) => {
           <CardImage style={{ backgroundImage: `url(${book.cover_image_url})`, backgroundSize: "cover" }} />
           <TitleHashtag>
             <Title>{book.title}</Title>
-            <Hashtag>{book.hashtag}</Hashtag>
+            <HashtagWrapper>
+              {book.hashTags.map((tag) => {
+                return (
+                  <Hashtag># {tag.tagName}</Hashtag>
+                )
+              })}
+            </HashtagWrapper>
           </TitleHashtag>
           <CreateInfo>
-            <CreateDate>{new Date(book.create_at).toLocaleDateString()}</CreateDate>
+            <CreateDate>{new Date(book.createAt).toLocaleDateString()}</CreateDate>
           </CreateInfo>
         </CardFront>
         <CardBack>

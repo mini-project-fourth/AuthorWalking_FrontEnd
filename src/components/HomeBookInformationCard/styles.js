@@ -16,6 +16,8 @@ export const CardWrapper = styled.div`
   margin: 16px 0;
   display: inline-block;
   vertical-align: top;
+  cursor: pointer;
+
   &:hover ${CardInner} {
     transform: rotateY(180deg);
   }
@@ -73,7 +75,12 @@ export const Title = styled.h3`
   font-weight: bold;
 `;
 
+export const HashtagWrapper = styled.div`
+  width: 100%;
+`
+
 export const Hashtag = styled.span`
+  display: inline;
   color: #414141;
   font-size: 0.95rem;
 `;

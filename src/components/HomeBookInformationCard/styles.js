@@ -83,6 +83,7 @@ export const Hashtag = styled.span`
   display: inline;
   color: #414141;
   font-size: 0.95rem;
+  margin: 0px 4px;
 `;
 
 export const CreateInfo = styled.div`

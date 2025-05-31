@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// post/put은 명시적으로 JSON 문자열을 보냅니다.
 export const postBook = async(book) => {
     try{
         await axios.post(
@@ -25,12 +26,18 @@ export const getBook = async(bookId) => {
     }
 }
 
-// backend; hashtags update error: not updated
 export const putBook = async(book, bookId) => {
     try{
-        console.log('hey')
-        const res = await axios.put(`http://localhost:8080/books/${bookId}`, book);
-        return res.data;
+        await axios.put(
+            `http://localhost:8080/books/${bookId}`,
+            JSON.stringify(book), // 명시적으로 JSON 문자열
+            {
+                headers: {
+                "Content-Type": "application/json"
+                }
+            }
+        );
+        return res;
     } catch(e){
         console.error("getBookError: ", e);
     }

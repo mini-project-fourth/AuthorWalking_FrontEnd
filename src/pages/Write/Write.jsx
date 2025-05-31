@@ -72,14 +72,16 @@ const handleKeyDown = (e) => {
 const handleUpload = () => {
   if (editMode == true){
     const newBook = {
-      title: title,
+      title,
+      author: book.author,
       contents: content,
       cover: imageUrl,
+      hashTags: hashtags
     }
     putBook(newBook, book.id);
   } else {
     const newBook = {
-      title: title,
+      title,
       author: "홍길동",
       contents: content,
       cover: imageUrl,

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { WriteContainer, WriteForm, WriteTitle, DivHr, WriteTextArea, WriteTools, DropdownMenuBtn, DropdownMenuContainer, OpenDropdownMenuBtn } from "./styles";
+import { deleteBook } from "../../apis/Book";
 
 const View = () => {
     const navigate = useNavigate();
@@ -49,7 +50,8 @@ const View = () => {
                   }}>수정하기</DropdownMenuBtn>
                   <DropdownMenuBtn 
                     onClick={()=> {
-                      navigate(`/books/${book.id}/edit`)
+                      deleteBook(book.id)
+                      navigate(`/`)
                     }}
                     style={{color:'#E10B0B'}}
                     >삭제하기</DropdownMenuBtn>

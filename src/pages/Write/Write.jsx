@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import generateImage from "../../apis/GenerateImage";
 import { WriteContainer, WriteForm, WriteTitle, WriteTextArea, WriteSubmit, DivHr, ModalOverlay, ModalContent, ModalTitle, ModalMetadata, ModalImage, ModalDataControlButton, ModalBtnContainer, ModalContentData, ModalCloseButton, HashtagInput, HashTagContainer, HashtagButton, FormDivHr, ProgressCircleContainer } from './styles';
 import CircularProgress from'@mui/material/CircularProgress'
-import mockBooks from "../../mock/MockBook";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { getBook, postBook } from "../../apis/Book";
+import { getBook, postBook, putBook } from "../../apis/Book";
 
 const Write = () => {
   // initializing
@@ -41,7 +40,7 @@ const Write = () => {
     if (editMode){
       fetchBook();
     }
-  }, []);
+  }, [editMode, id]);
 
 // 이미지 생성 함수
 const handleGenerateImage = async () => {
@@ -62,21 +61,32 @@ const handleGenerateImage = async () => {
 const handleKeyDown = (e) => {
   if (e.key === 'Enter' && !e.shiftKey) {
     e.preventDefault(); // 줄바꿈 방지
-    setHashtags([...hashtags, e.target.value]);
-    setTag("");
+    if (e.target.value !== "") {
+      setHashtags([...hashtags, e.target.value.trim()]);
+      setTag("");
+    }
   }
 };
 
 // 업로드 함수
 const handleUpload = () => {
-  const newBook = {
-    title,
-    author: "홍길동",
-    contents: content,
-    cover: imageUrl,
-    hashtags,
+  if (editMode == true){
+    const newBook = {
+      title: title,
+      contents: content,
+      cover: imageUrl,
+    }
+    putBook(newBook, book.id);
+  } else {
+    const newBook = {
+      title: title,
+      author: "홍길동",
+      contents: content,
+      cover: imageUrl,
+      hashTags: hashtags ? hashtags : [],
+    }
+    postBook(newBook);
   }
-  postBook(newBook);
 
   // 초기화
   setTitle("");
@@ -124,11 +134,13 @@ const handleUpload = () => {
               <FormDivHr />
               <HashTagContainer>
                 {
-                  hashtags.map((hashtag) => {
+                  hashtags.map((hashtag, idx) => {
                     return (
-                      <HashtagButton onClick={() => {
-                        setHashtags(hashtags.filter((tag) => tag !== hashtag))
-                      }}>
+                      <HashtagButton 
+                        key={`${hashtag}-${idx}`}
+                        onClick={() => {
+                          setHashtags(hashtags.filter((tag) => tag !== hashtag))
+                        }}>
                         # {hashtag}
                       </HashtagButton>
                     )

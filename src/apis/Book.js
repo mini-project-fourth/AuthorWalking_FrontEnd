@@ -2,9 +2,15 @@ import axios from "axios";
 
 export const postBook = async(book) => {
     try{
-        const res = await axios.post('http://localhost:8080/books', book);
-        console.log(res);
-        return res;
+        await axios.post(
+            "http://localhost:8080/books",
+            JSON.stringify(book), // 명시적으로 JSON 문자열
+            {
+                headers: {
+                "Content-Type": "application/json"
+                }
+            }
+        );
     } catch(error) {
         console.error("에러 발생:", error);
     }
@@ -13,6 +19,26 @@ export const postBook = async(book) => {
 export const getBook = async(bookId) => {
     try{
         const res = await axios.get(`http://localhost:8080/books/${bookId}`);
+        return res.data;
+    } catch(e){
+        console.error("getBookError: ", e);
+    }
+}
+
+// backend; hashtags update error: not updated
+export const putBook = async(book, bookId) => {
+    try{
+        console.log('hey')
+        const res = await axios.put(`http://localhost:8080/books/${bookId}`, book);
+        return res.data;
+    } catch(e){
+        console.error("getBookError: ", e);
+    }
+}
+
+export const deleteBook = async(bookId) => {
+    try{
+        const res = await axios.delete(`http://localhost:8080/books/${bookId}`);
         return res.data;
     } catch(e){
         console.error("getBookError: ", e);

@@ -19,9 +19,9 @@ const HomeBookInformationCard = ({ book }) => {
           <TitleHashtag>
             <Title>{book.title}</Title>
             <HashtagWrapper>
-              {book.hashTags.map((tag) => {
+              {book.hashTags.map((tag, idx) => {
                 return (
-                  <Hashtag># {tag.tagName}</Hashtag>
+                  <Hashtag key={`hashtag:${book.id}-${idx}`}># {tag.tagName}</Hashtag>
                 )
               })}
             </HashtagWrapper>

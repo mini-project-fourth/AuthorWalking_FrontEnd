@@ -9,13 +9,13 @@ const HomeBookInformationCard = ({ book }) => {
   return (
     <CardWrapper
       onClick={() => {
-        console.log(book.book_id)
-        navigate(`/books/${book.book_id}`, {state: {book,}})
+        console.log(book.id)
+        navigate(`/books/${book.id}`, {state: {book}})
       }}  
     >
       <CardInner>
         <CardFront>
-          <CardImage style={{ backgroundImage: `url(${book.cover_image_url})`, backgroundSize: "cover" }} />
+          <CardImage style={{ backgroundImage: `url(${book.cover})`, backgroundSize: "cover" }} />
           <TitleHashtag>
             <Title>{book.title}</Title>
             <HashtagWrapper>

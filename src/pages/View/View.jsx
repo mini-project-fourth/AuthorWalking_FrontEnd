@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { WriteContainer, WriteForm, WriteTitle, DivHr, WriteTextArea, WriteTools, DropdownMenuBtn, DropdownMenuContainer, OpenDropdownMenuBtn } from "./styles";
 
 const View = () => {
@@ -15,8 +15,8 @@ const View = () => {
     useEffect(() => {
       if (!book) return;
       setTitle(book.title);
-      setContent(book.content);
-    }, [book])
+      setContent(book.contents);
+    }, [])
 
     useEffect(() => {
       const handleClickoutside = (event) => {

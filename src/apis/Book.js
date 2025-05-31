@@ -37,7 +37,6 @@ export const putBook = async(book, bookId) => {
                 }
             }
         );
-        return res;
     } catch(e){
         console.error("getBookError: ", e);
     }

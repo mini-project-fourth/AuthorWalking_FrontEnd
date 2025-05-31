@@ -4,19 +4,16 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 
 export const AppBarStyled = styled(AppBar)`
-  color: white !important;
-  background-color: #ffffff !important; 
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
-  position: static;
+  background-color: #F8F8F8 !important; 
+  box-shadow: 0 0.5px 0px rgba(0,0,0,0.1) !important;
+  position: fixed;
 `;
 
 export const ToolbarStyled = styled(Toolbar)`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  min-height: 60px;
-  padding-left: 16px !important;
-  padding-right: 16px !important;
+  padding: 0px 16px;
 `;
 
 export const Logo = styled.div`
@@ -30,8 +27,8 @@ export const Logo = styled.div`
 `;
 
 export const LogoImage = styled.img`
-  height: 52px;
-  width: 52px;
+  height: 48px;
+  width: 48px;
   cursor: pointer;
   transition: transform 0.3s ease;
   &:hover {
@@ -48,7 +45,8 @@ export const NavMenu = styled.nav`
 
 export const NavButton = styled(Button)`
   color: #000000 !important;
-  font-weight: 500;
+  font-weight: 400 !important;
+  font-size: 14px !important;
 `;
 
 export const ProfileSection = styled.div`

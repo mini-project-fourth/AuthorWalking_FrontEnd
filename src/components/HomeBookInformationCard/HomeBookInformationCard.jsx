@@ -31,7 +31,7 @@ const HomeBookInformationCard = ({ book }) => {
           </CreateInfo>
         </CardFront>
         <CardBack>
-          <Content>{book.content}</Content>
+          <Content>{book.contents}</Content>
         </CardBack>
       </CardInner>
     </CardWrapper>

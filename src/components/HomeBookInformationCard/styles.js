@@ -11,8 +11,9 @@ export const CardInner = styled.div`
 
 export const CardWrapper = styled.div`
   perspective: 1000px;
-  width: 200px;
-  height: 320px;
+  aspect-ratio: 2 / 3;
+  min-width: 200px;
+  max-width: 240px;
   margin: 16px 0;
   display: inline-block;
   vertical-align: top;
@@ -30,7 +31,7 @@ export const CardFront = styled.div`
   backface-visibility: hidden;
   background: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  padding: 20px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,8 +57,7 @@ export const CardImage = styled.div`
   height: 100%;
   min-height: 160px;
   background: #eee;
-  margin: 0 12px 12px 12px;
-  border-radius: 8px;
+  border-radius: 0px;
   background-position: center;
   background-repeat: no-repeat;
 `;
@@ -70,19 +70,22 @@ export const TitleHashtag = styled.div`
 `;
 
 export const Title = styled.h3`
-  font-size: 1.1rem;
-  margin: 0 0 4px 0;
+  font-size: 18px;
+  margin: 8px 0px;
   font-weight: bold;
 `;
 
 export const HashtagWrapper = styled.div`
   width: 100%;
+  height: auto;
+  overflow: hidden;
+  white-space: nowrap;
 `
 
 export const Hashtag = styled.span`
-  display: inline;
+  display: inline-block;
   color: #414141;
-  font-size: 0.95rem;
+  font-size: 14px;
   margin: 0px 4px;
 `;
 
@@ -95,12 +98,13 @@ export const CreateInfo = styled.div`
 
 export const CreateDate = styled.span`
   color: #818181;
-  font-size: 0.9rem;
+  font-size: 12px;
 `;
 
 export const Content = styled.div`
   font-size: 1rem;
   color: #333;
   text-align: center;
-  word-break: keep-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;

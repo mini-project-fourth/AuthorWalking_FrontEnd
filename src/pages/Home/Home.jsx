@@ -42,13 +42,17 @@ const Home = () => {
         ))}
       </CardContainer>
       <Fab
-        color="primary"
         aria-label="add"
         sx={{
+          background: "#666666",
+          color: "#fff",
           position: "fixed",
           bottom: 70,
           right: 70,
           zIndex: 1000,
+          '&:hover': {
+            color: "#666666",
+          }
         }}
         onClick={() => navigate("/write")}
       >

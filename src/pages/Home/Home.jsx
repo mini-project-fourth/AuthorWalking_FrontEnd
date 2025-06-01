@@ -8,6 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { getBooks } from "../../apis/Book";
 
 const chunkArray = (array, size) => {
+  if (!Array.isArray(array)) return []; 
   const result = [];
   for (let i = 0; i < array.length; i += size) {
     result.push(array.slice(i, i + size));
@@ -17,15 +18,15 @@ const chunkArray = (array, size) => {
 
 const Home = () => {
   const navigate = useNavigate();
-  const [booksToShow, setBooksToShow] = useState([])
+  const [booksToShow, setBooksToShow] = useState([]);
 
   useEffect(() => {
     const fetchBooks = async () => {
-      setBooksToShow(await getBooks());
-      console.log(booksToShow);
-    }
+      const data = await getBooks();
+      setBooksToShow(Array.isArray(data) ? data : []);
+    };
     fetchBooks();
-  }, [])
+  }, []);
 
   const chunkedBooks = chunkArray(booksToShow, 4);
 
@@ -50,9 +51,9 @@ const Home = () => {
           bottom: 70,
           right: 70,
           zIndex: 1000,
-          '&:hover': {
+          "&:hover": {
             color: "#666666",
-          }
+          },
         }}
         onClick={() => navigate("/write")}
       >

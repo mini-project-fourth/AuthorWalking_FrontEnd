@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   SignUpWrapper,
   SignUpPaper,
@@ -10,6 +11,7 @@ import {
 import { signUp } from "../../apis/SignUp";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -38,6 +40,7 @@ const SignUp = () => {
         username: form.username,
       });
       alert("회원가입 성공!");
+      navigate("/login");
     } catch (error) {
       alert("회원가입 실패: " + (error.response?.data?.message || error.message));
     }

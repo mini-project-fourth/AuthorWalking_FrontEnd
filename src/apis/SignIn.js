@@ -14,6 +14,9 @@ export const signIn = async (userData) => {
         withCredentials: true,
       }
     );
+    // 로그인 성공 시 토큰을 localStorage에 저장
+    localStorage.setItem("token", response.data);
+    console.log("로그인 성공, 토큰 저장:", response.data);
     return response.data;
   } catch (error) {
     console.error("로그인 API 오류:", error);

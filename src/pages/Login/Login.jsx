@@ -9,7 +9,7 @@ import {
   SignUpButton,
 } from "./styles";
 import { useNavigate } from "react-router-dom";
-import { signIn } from "../../apis/SignIn"; // 올바른 경로로 import
+import { signIn } from "../../apis/SignIn";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,9 +22,9 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signIn(form); // signIn API 사용
+      await signIn(form);
       alert("로그인 성공!");
-      // 로그인 성공 후 이동 등 추가
+      navigate("/"); 
     } catch (error) {
       alert("로그인 실패: " + (error.response?.data?.message || error.message));
     }

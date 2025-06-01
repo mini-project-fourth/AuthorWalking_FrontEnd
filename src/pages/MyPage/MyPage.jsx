@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   MyPageWrapper,
   MyPagePaper,
@@ -11,21 +11,27 @@ import {
   InfoValue,
   EditButton,
 } from "./styles";
-import mockuser from "../../mock/MockUser";
+import { getUserInfo } from "../../apis/UserInfo";
 
 const MyPage = () => {
-  const user = mockuser;
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    getUserInfo().then(setUser).catch(() => setUser(null));
+  }, []);
+
+  if (!user) return null;
 
   return (
     <MyPageWrapper>
       <MyPagePaper elevation={3}>
         <MyPageTitle>마이페이지</MyPageTitle>
         <ProfileSection>
-          <ProfileAvatar src={user.profileImage}>{user.name[0]}</ProfileAvatar>
+          <ProfileAvatar src={user.profileImage}>{user.username?.[0]}</ProfileAvatar>
           <ProfileInfo>
             <InfoItem>
               <InfoLabel>이름</InfoLabel>
-              <InfoValue>{user.name}</InfoValue>
+              <InfoValue>{user.username}</InfoValue>
             </InfoItem>
             <InfoItem>
               <InfoLabel>이메일</InfoLabel>
@@ -33,7 +39,7 @@ const MyPage = () => {
             </InfoItem>
             <InfoItem>
               <InfoLabel>닉네임</InfoLabel>
-              <InfoValue>{user.nickname}</InfoValue>
+              <InfoValue>{user.username}</InfoValue>
             </InfoItem>
           </ProfileInfo>
         </ProfileSection>

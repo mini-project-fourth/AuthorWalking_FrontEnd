@@ -52,7 +52,7 @@ const View = () => {
                     }}></MoreHorizIcon>
                 </OpenDropdownMenuBtn>
                 {showDropdownMenu && (
-                <DropdownMenuContainer onClick={(e) => e.stopPropagation()}>
+                <DropdownMenuContainer>
                   <DropdownMenuBtn onClick={()=> {
                       navigate(`/books/${book.id}/edit`, { state: {book:book} })
                   }}>
@@ -63,9 +63,9 @@ const View = () => {
                     </DropdownMenuTitle>
                   </DropdownMenuBtn>
                   <DropdownMenuBtn 
-                    onClick={()=> {
-                      deleteBook(book.id)
-                      navigate(`/`)
+                    onClick={async()=> {
+                      await deleteBook(book.id)
+                      navigate("/")
                     }}
                     style={{color:'#E10B0B'}}
                     >

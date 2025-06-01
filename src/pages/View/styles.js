@@ -41,10 +41,11 @@ export const DropdownMenuContainer = styled.div`
   flex-direction: column;
   justify-content: space-around;
   position: absolute;
-  top: 24px;
+  top: 32px;
   right: 0;
-  border: #434343 0.3px solid;
-  background: white;
+  border:rgba(67, 67, 67, 0.8) 0.3px solid;
+  box-shadow: 4px 4px 30px 0px rgba(31, 31, 34, 0.1);
+  background:rgba(255, 255, 255, 0.85);
   border-radius: 18px;
   padding: 22px;
 `
@@ -77,6 +78,7 @@ export const WriteTitle = styled.input`
 `;
 
 export const WriteTextArea = styled.textarea`
+  margin-top: 24px;
   height: 100%;
   padding: 12px;
   font-size: 18px;

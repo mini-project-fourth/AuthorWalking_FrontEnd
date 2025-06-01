@@ -15,6 +15,7 @@ const Write = () => {
   const [book, setBook] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [showModal, setShowModal] = useState(false);
@@ -69,7 +70,8 @@ const handleKeyDown = (e) => {
 };
 
 // 업로드 함수
-const handleUpload = () => {
+const handleUpload = async() => {
+  setUploading(true);
   if (editMode == true){
     const newBook = {
       title,
@@ -78,7 +80,7 @@ const handleUpload = () => {
       cover: imageUrl,
       hashTags: hashtags
     }
-    putBook(newBook, book.id);
+    await putBook(newBook, book.id);
   } else {
     const newBook = {
       title,
@@ -87,7 +89,7 @@ const handleUpload = () => {
       cover: imageUrl,
       hashTags: hashtags ? hashtags : [],
     }
-    postBook(newBook);
+    await postBook(newBook);
   }
 
   // 초기화
@@ -95,6 +97,7 @@ const handleUpload = () => {
   setContent("");
   setImageUrl(null);
   setHashtags([]);
+  setUploading(false);
 
   // 리다이렉트
   navigate("/");
@@ -167,7 +170,15 @@ const handleUpload = () => {
                     <ModalDataControlButton onClick={() => handleGenerateImage()}>Generate</ModalDataControlButton>
                   )
                 }
-                <ModalDataControlButton onClick={handleUpload}>Upload</ModalDataControlButton>
+                {
+                  uploading ? (
+                    <ProgressCircleContainer>
+                      <CircularProgress size="22px" sx={{color: "#DADADA"}}/>
+                    </ProgressCircleContainer>
+                  ) : (
+                    <ModalDataControlButton onClick={handleUpload}>Upload</ModalDataControlButton>
+                  )
+                }
               </ModalBtnContainer>
             </ModalMetadata>
           </ModalContent>

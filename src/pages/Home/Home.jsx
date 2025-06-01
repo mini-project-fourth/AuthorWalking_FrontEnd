@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import HomeBookInformationCard from "../../components/HomeBookInformationCard/HomeBookInformationCard";
 import { SafeView, Title, CardRow, CardContainer } from "./styles";
-import mockBooks from "../../mock/MockBook";
 import Fab from "@mui/material/Fab";
 import CreateIcon from "@mui/icons-material/Create";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getBooks } from "../../apis/Book";
 
 const chunkArray = (array, size) => {
+  if (!Array.isArray(array)) return [];
   const result = [];
   for (let i = 0; i < array.length; i += size) {
     result.push(array.slice(i, i + size));
@@ -17,7 +17,7 @@ const chunkArray = (array, size) => {
 
 const Home = () => {
   const navigate = useNavigate();
-  const [booksToShow, setBooksToShow] = useState([])
+  const [booksToShow, setBooksToShow] = useState([]);
 
   useEffect(() => {
     const fetchBooks = async () => {

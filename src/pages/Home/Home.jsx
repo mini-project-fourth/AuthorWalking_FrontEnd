@@ -4,10 +4,12 @@ import { SafeView, Title, CardRow, CardContainer } from "./styles";
 import Fab from "@mui/material/Fab";
 import CreateIcon from "@mui/icons-material/Create";
 import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getBooks } from "../../apis/Book";
 import { getUserInfo } from "../../apis/UserInfo";
 
 const chunkArray = (array, size) => {
+  if (!Array.isArray(array)) return [];
   if (!Array.isArray(array)) return [];
   const result = [];
   for (let i = 0; i < array.length; i += size) {

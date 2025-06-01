@@ -79,7 +79,8 @@ export const ModalContent = styled.div`
   color: white;
   padding: 24px 32px;
   border-radius: 12px;
-  max-width: 75%;
+  max-width: 760px;
+  aspect-ratio: 39:25;
   height: 50%;
   width: 90%;
   display: flex;

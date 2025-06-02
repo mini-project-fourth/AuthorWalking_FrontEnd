@@ -4,7 +4,6 @@ import { SafeView, Title, CardRow, CardContainer } from "./styles";
 import Fab from "@mui/material/Fab";
 import CreateIcon from "@mui/icons-material/Create";
 import { useNavigate } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { getBooks } from "../../apis/Book";
 import { getUserInfo } from "../../apis/UserInfo";
 

@@ -7,6 +7,7 @@ import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import MyPage from "../pages/MyPage/MyPage";
 import View from "../pages/View/View";
+import BookSearch from "../pages/BookSearch/BookSearch";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -79,6 +80,15 @@ const router = createBrowserRouter([
         <Write />
       </>
     )
+  },
+  {
+    path: "booksearch",
+    element:(
+      <>
+        <Header />
+        <BookSearch />
+      </>
+    ),
   }
 ]);
 

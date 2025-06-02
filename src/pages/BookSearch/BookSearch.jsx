@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import bookSearch from "../../apis/BookSearch";
+import BookInformationCard from "../../components/BookInformationCard/BookInformationCard";
+import { SafeView, Title, CardContainer } from "./styles";
 
 const BookSearch = () => {
   const location = useLocation();
@@ -9,25 +10,44 @@ const BookSearch = () => {
 
   useEffect(() => {
     if (searchValue) {
-      bookSearch(searchValue).then(data => {
-        setBooks(data.items || []);
+      import("../../apis/BookSearch").then(({ default: bookSearch }) => {
+        bookSearch(searchValue).then(data => {
+          const mappedBooks = (data?.items || []).map((item, idx) => ({
+            id: idx,
+            title: item.title.replace(/<[^>]+>/g, ""),
+            author: item.author,
+            cover: item.image,
+            contents: item.description,
+            pubdate: item.pubdate,
+            hashTags: [],
+          }));
+          setBooks(mappedBooks);
+        });
       });
     }
   }, [searchValue]);
 
   return (
-    <div>
-      <h2>검색 결과: "{searchValue}"</h2>
-      <ul>
-        {books.map((book, idx) => (
-          <li key={idx}>
-            <img src={book.image} alt={book.title} style={{height: 50}} />
-            <div>{book.title.replace(/<[^>]+>/g, "")}</div>
-            <div>{book.author}</div>
-          </li>
+    <SafeView>
+      <Title>검색 결과: "{searchValue}"</Title>
+      <CardContainer>
+        {books.map((book) => (
+          <div
+            key={book.id}
+            style={{
+              flex: "1 1 calc(25% - 36px)",
+              minWidth: "260px",
+              maxWidth: "320px",
+              boxSizing: "border-box",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <BookInformationCard book={book} />
+          </div>
         ))}
-      </ul>
-    </div>
+      </CardContainer>
+    </SafeView>
   );
 };
 

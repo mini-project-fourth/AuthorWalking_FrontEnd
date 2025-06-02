@@ -10,10 +10,8 @@ export const CardInner = styled.div`
 `;
 
 export const CardWrapper = styled.div`
-  perspective: 1000px;
   aspect-ratio: 2 / 3;
-  min-width: 200px;
-  max-width: 240px;
+  min-width: 180px;
   margin: 16px 0;
   display: inline-block;
   vertical-align: top;
@@ -31,7 +29,6 @@ export const CardFront = styled.div`
   backface-visibility: hidden;
   background: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  padding: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,7 +41,6 @@ export const CardBack = styled.div`
   backface-visibility: hidden;
   background: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -93,8 +89,28 @@ export const CreateInfo = styled.div`
   margin-top: 8px;
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: baseline;
 `;
+
+export const AuthorInfo = styled.div`
+  display: flex;
+  gap: 4px;
+  align-items: center;
+`
+
+export const AuthorProfile = styled.div`
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 10px;
+`
+
+export const AuthorName = styled.p`
+  color:rgb(77, 77, 77);
+  font-size: 14px;
+  font-weight: 500;
+`
 
 export const CreateDate = styled.span`
   color: #818181;

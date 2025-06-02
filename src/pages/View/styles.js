@@ -43,11 +43,11 @@ export const DropdownMenuContainer = styled.div`
   position: absolute;
   top: 32px;
   right: 0;
-  border:rgba(67, 67, 67, 0.8) 0.3px solid;
+  border: rgba(0, 0, 0, 0.2) 1px solid;
   box-shadow: 4px 4px 30px 0px rgba(31, 31, 34, 0.1);
-  background:rgba(255, 255, 255, 0.85);
+  background:white;
   border-radius: 18px;
-  padding: 22px;
+  padding: 4px 0px;
 `
 
 export const DropdownMenuBtn = styled.button`
@@ -55,10 +55,15 @@ export const DropdownMenuBtn = styled.button`
   align-content: center;
   background: transparent;
   border: none;
-  padding: 4px;
+  padding: 16px 32px 16px 16px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
+  border-radius: 18px;
   font-weight: 500;
+
+  &:hover {
+    background:rgb(242, 241, 241)
+  }
 `
 
 export const DropdownMenuTitle = styled.p`

@@ -6,7 +6,7 @@ export const MyPageWrapper = styled(Box)`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f3f4f6;
+  background: white;
 `;
 
 export const MyPagePaper = styled(Paper)`
@@ -30,7 +30,7 @@ export const MyPageTitle = styled(Typography).attrs({
 export const ProfileSection = styled.div`
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
   margin-bottom: 32px;
 `;
 
@@ -66,10 +66,14 @@ export const InfoValue = styled.div`
   color: #222;
 `;
 
-export const EditButton = styled(Button)`
-  && {
-    margin-top: 24px;
-    font-weight: bold;
-    font-size: 1rem;
+export const EditButton = styled.button`
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background:rgba(248, 248, 248, 0.99);
+  cursor: pointer;
+  border: rgba(0, 0, 0, 0.4) 1px solid;
+  padding: 8px 16px;
+  border-radius: 16px;
+  &:hover{
+    background:rgb(242, 241, 241)
   }
 `;

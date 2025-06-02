@@ -31,7 +31,7 @@ const HomeBookInformationCard = ({ book }) => {
     >
       <CardInner>
         <CardFront>
-          <CardImage style={{ backgroundImage: `url(${book.cover})`, backgroundSize: "cover" }} />
+          <CardImage style={{ backgroundImage: `url(${book.cover})` }} />
         </CardFront>
         <CardBack>
           <Content>{book.contents}</Content>

@@ -6,16 +6,20 @@ export const CardInner = styled.div`
   height: 100%;
   transition: transform 0.6s;
   transform-style: preserve-3d;
-  transform-origin: center center; 
+  transform-origin: center; 
 `;
 
 export const CardWrapper = styled.div`
   aspect-ratio: 2 / 3;
-  min-width: 180px;
-  margin: 16px 0;
-  display: inline-block;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 16px;
+  position: relative;
   vertical-align: top;
   cursor: pointer;
+  overflow: hidden;
 
   &:hover ${CardInner} {
     transform: rotateY(180deg);
@@ -32,6 +36,7 @@ export const CardFront = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 `;
 
 export const CardBack = styled.div`
@@ -41,21 +46,23 @@ export const CardBack = styled.div`
   backface-visibility: hidden;
   background: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transform: rotateY(180deg);
+  justify-content: flex-start;
+  overflow-y: auto;
 `;
 
 export const CardImage = styled.div`
   width: 100%;
-  height: 100%;
+  aspect-ratio: 2 / 3;
   min-height: 160px;
   background: #eee;
   border-radius: 0px;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  overflow: hidden;
 `;
 
 export const TitleHashtag = styled.div`
@@ -121,6 +128,6 @@ export const Content = styled.div`
   font-size: 1rem;
   color: #333;
   text-align: center;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  overflow-wrap: break-word;
+  line-height: 1.4;
 `;

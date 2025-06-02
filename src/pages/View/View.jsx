@@ -65,7 +65,8 @@ const View = () => {
                   >
                     <DeleteForeverIcon />
                     <DropdownMenuTitle 
-                      sx={{fontSize: 'medium'}}>
+                      sx={{fontSize: 'medium'}}
+                      onClick={()=>navigate("/")}>
                       삭제하기
                     </DropdownMenuTitle>
                 </DropdownMenuBtn>

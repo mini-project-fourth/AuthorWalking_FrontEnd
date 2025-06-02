@@ -21,6 +21,8 @@ import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import SearchIcon from "@mui/icons-material/Search";
+import IconButton from "@mui/material/IconButton";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -71,6 +73,7 @@ const Header = () => {
       clearInterval(interval);
       document.removeEventListener("click", handleClick);
     };
+    // eslint-disable-next-line
   }, [user]);
 
   const handleLogout = () => {
@@ -90,7 +93,7 @@ const Header = () => {
   };
 
   const handleClick = (e) => {
-    if (!e.target.closest(`${drop.current.className}`) && open) {
+    if (!e.target.closest(`${drop.current?.className}`) && open) {
       setOpen(false);
     }
   };
@@ -107,24 +110,25 @@ const Header = () => {
   return (
     <AppBarStyled>
       <ToolbarStyled>
-        <NavMenu></NavMenu>
+        <NavMenu />
         <NavMenu>
           <LogoImage src={logoImg} alt="Logo" onClick={() => navigate("/")} />
         </NavMenu>
         <ProfileSection>
+          <IconButton color="inherit" onClick={() => setSearchOpen(true)}>
+            <SearchIcon sx={{ color: "#000" }} />
+          </IconButton>
           {token ? (
             <ProfileDropdown className="dropdown" ref={drop}>
               <ProfileButton
                 ref={profileButtonRef}
                 onClick={() => setOpen((open) => !open)}
               >
-                <ProfileIcon style={{ background: profileColor }}></ProfileIcon>
+                <ProfileIcon style={{ background: profileColor }} />
                 안녕하세요, {user?.username || ""} 님
-                <KeyboardArrowDownIcon
-                  sx={{ fontSize: "small" }}
-                ></KeyboardArrowDownIcon>
+                <KeyboardArrowDownIcon sx={{ fontSize: "small" }} />
               </ProfileButton>
-              {open && [
+              {open && (
                 <DropdownWrapper style={{ width: `${sectionWidth}px` }}>
                   <DropdownButton onClick={() => navigate("/mypage")}>
                     내 정보
@@ -132,8 +136,8 @@ const Header = () => {
                   <DropdownButton onClick={handleLogout}>
                     로그아웃
                   </DropdownButton>
-                </DropdownWrapper>,
-              ]}
+                </DropdownWrapper>
+              )}
             </ProfileDropdown>
           ) : (
             <NavButton onClick={() => navigate("/login")}>로그인</NavButton>
@@ -168,4 +172,5 @@ const Header = () => {
     </AppBarStyled>
   );
 };
+
 export default Header;

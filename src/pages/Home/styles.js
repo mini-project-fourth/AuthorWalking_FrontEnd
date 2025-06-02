@@ -9,7 +9,7 @@ export const SafeView = styled.div`
 export const Title = styled.h1`
   font-size: 20px;
   font-weight: 500;
-  margin: 18px 0px;
+  margin: 22px 0px;
   text-align: center;
   align-self: flex-start;
 `;

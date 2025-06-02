@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { AppBarStyled, ToolbarStyled, Logo, NavMenu, ProfileSection, LogoImage, NavButton, ProfileButton, ProfileDropdown, DropdownWrapper, DropdownButton } from './Styles';
+import { AppBarStyled, ToolbarStyled, Logo, NavMenu, ProfileSection, LogoImage, NavButton, ProfileButton, ProfileDropdown, DropdownWrapper, DropdownButton, ProfileIcon } from './Styles';
 import { useNavigate } from 'react-router-dom';
 import logoImg from '../../assets/logo.png'; 
 import { getUserInfo } from '../../apis/UserInfo';
@@ -10,8 +10,10 @@ const Header = () => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState(null);
   const [open, setOpen] = useState(false);
+  const [profileColor, setProfileColor] = useState("#000000");
   const drop = useRef(null);
-
+  const profileButtonRef = useRef(null);
+  const [sectionWidth, setSectionWidth] = useState(0);
   
   useEffect(() => {
     // 로그인/로그아웃 시 storage 이벤트 감지
@@ -24,17 +26,32 @@ const Header = () => {
     }, 500);
 
     // 유저 정보 가져오기
-    getUserInfo().then(setUser).catch(() => setUser(null));
-    console.log(user?user:"");
+    getUserInfo().then((newUser) => {
+      if (JSON.stringify(user) !== JSON.stringify(newUser)){
+        setUser(newUser);
+      }
+    }).catch(() => setUser(null));
     
+    // toggle addevent
     document.addEventListener("click", handleClick);
+
+    // set profile color
+    if (user){
+      setProfileColor(getRandomHexColor(user.username));
+    }
+
+    // set width
+    if (profileButtonRef.current) {
+      const rect = profileButtonRef.current.getBoundingClientRect();
+      setSectionWidth(rect.width);
+    }
     
     return () => {
       window.removeEventListener("storage", onStorage);
       clearInterval(interval);
       document.removeEventListener("click", handleClick);
     };
-  }, []);
+  }, [user]);
   
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -47,6 +64,15 @@ const Header = () => {
     if(!e.target.closest(`${drop.current.className}`) && open) {
       setOpen(false);
     }
+  }
+
+  const getRandomHexColor = (str) => {
+    let hash = 0;
+    for(let i = 0; i<str.length;i++){
+      hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    const color = (hash & 0x00ffffff).toString(16).padStart(6, '0');
+    return `#${color}`
   }
 
   return (
@@ -62,13 +88,14 @@ const Header = () => {
               className="dropdown"
               ref={drop}
             >
-              <ProfileButton onClick={() => setOpen(open => !open)}>
+              <ProfileButton ref={profileButtonRef} onClick={() => setOpen(open => !open)}>
+                <ProfileIcon style={{background:profileColor}}></ProfileIcon>
                 안녕하세요, {user?.username || ""} 님
-                <KeyboardArrowDownIcon sx={{fontSize:'small', marginLeft: '4px'}}></KeyboardArrowDownIcon>
+                <KeyboardArrowDownIcon sx={{fontSize:'small'}}></KeyboardArrowDownIcon>
               </ProfileButton>
               {open && 
                 [
-                  <DropdownWrapper>
+                  <DropdownWrapper style={{width: `${sectionWidth}px`}}>
                     <DropdownButton onClick={() => navigate("/mypage")}>내 정보</DropdownButton>
                     <DropdownButton onClick={handleLogout}>로그아웃</DropdownButton>
                   </DropdownWrapper>

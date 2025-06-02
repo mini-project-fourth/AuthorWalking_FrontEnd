@@ -51,6 +51,14 @@ export const NavButton = styled(Button)`
   font-size: 14px !important;
 `;
 
+export const ProfileIcon = styled.div`
+  border-radius: 50px;
+  width: 28px;
+  height: 28px;
+  margin: 2px;
+  display: inline-block;
+`
+
 export const ProfileDropdown = styled.div`
   border: rgba(0, 0, 0, 0.4) 1px solid;
   border-radius: 12px;
@@ -71,12 +79,14 @@ export const DropdownWrapper = styled.div`
 `
 
 export const DropdownButton = styled.button`
-  padding: 16px 120px 16px 16px;
+  padding: 16px;
   margin: 0;
   border: none;
   background: transparent;
   cursor: pointer;
   border-radius: 16px;
+  display: flex;
+  align-items: start;
 
   &:hover {
     background:rgb(242, 241, 241)
@@ -92,6 +102,9 @@ export const ProfileButton = styled.button`
   padding: 12px 16px;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 4px;
 
   &:active{
     color: black;

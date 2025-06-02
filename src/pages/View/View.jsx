@@ -65,6 +65,9 @@ const View = () => {
                   >
                     <DeleteForeverIcon />
                     <DropdownMenuTitle 
+                      onClick={async() => {
+                        navigate("/");
+                      }}
                       sx={{fontSize: 'medium'}}>
                       삭제하기
                     </DropdownMenuTitle>

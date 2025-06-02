@@ -37,10 +37,6 @@ const MyPage = () => {
               <InfoLabel>이메일</InfoLabel>
               <InfoValue>{user.email}</InfoValue>
             </InfoItem>
-            <InfoItem>
-              <InfoLabel>닉네임</InfoLabel>
-              <InfoValue>{user.username}</InfoValue>
-            </InfoItem>
           </ProfileInfo>
         </ProfileSection>
         <EditButton variant="contained" color="primary" fullWidth>

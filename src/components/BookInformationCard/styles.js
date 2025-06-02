@@ -1,44 +1,112 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const Card = styled.div`
-  width: 320px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+export const CardInner = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  transform-origin: center center; 
+`;
+
+export const CardWrapper = styled.div`
+  perspective: 1000px;
+  aspect-ratio: 2 / 3;
+  min-width: 200px;
+  max-width: 240px;
+  margin: 16px 0;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+`;
+
+export const CardFront = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
   background: #fff;
-  padding: 24px;
-  margin: 16px auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-export const CoverImage = styled.img`
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 16px;
+export const CardBack = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: rotateY(180deg);
 `;
 
-export const Title = styled.h2`
-  font-size: 1.3rem;
-  margin: 8px 0 4px 0;
+export const CardImage = styled.div`
+  width: 100%;
+  height: 100%;
+  min-height: 160px;
+  background: #eee;
+  border-radius: 0px;
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 
-export const Author = styled.p`
-  color: #1976d2;
-  margin: 0 0 12px 0;
+export const TitleHashtag = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+`;
+
+export const Title = styled.h3`
+  font-size: 18px;
+  margin: 8px 0px;
   font-weight: bold;
 `;
 
-export const Content = styled.p`
-  font-size: 1rem;
-  color: #444;
-  margin-bottom: 12px;
+export const HashtagWrapper = styled.div`
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  white-space: nowrap;
+`
+
+export const Hashtag = styled.span`
+  display: inline-block;
+  color: #414141;
+  font-size: 14px;
+  margin: 0px 4px;
 `;
 
-export const DateInfo = styled.div`
-  font-size: 0.85rem;
-  color: #aaa;
+export const CreateInfo = styled.div`
   margin-top: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const Author = styled.span`
+  color: #414141;
+  font-size: 12px;
+  
+`;
+
+export const CreateDate = styled.span`
+  color: #818181;
+  font-size: 12px;
+`;
+
+export const Content = styled.div`
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;

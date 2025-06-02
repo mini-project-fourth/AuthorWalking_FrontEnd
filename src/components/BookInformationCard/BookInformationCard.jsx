@@ -1,22 +1,79 @@
 import React from "react";
-import {Card, CoverImage, Title, Author, Content, DateInfo} from "./styles";
+import {
+  CardWrapper,
+  CardInner,
+  CardFront,
+  CardBack,
+  CardImage,
+  TitleHashtag,
+  Title,
+  Hashtag,
+  CreateInfo,
+  CreateDate,
+  Content,
+  HashtagWrapper,
+  Author,
+} from "./styles";
 import { useNavigate } from "react-router-dom";
 
 const BookInformationCard = ({ book }) => {
+  if (!book) return null;
+  const navigate = useNavigate();
+
   return (
-    <Card >
-      <CoverImage 
-        src={book.cover_image_url} 
-        alt={book.title} 
-      />
-      <Title>{book.title}</Title>
-      <Author>by {book.author}</Author>
-      <Content>{book.content}</Content>
-      <DateInfo>
-        등록일: {new Date(book.create_at).toLocaleDateString()}<br />
-        수정일: {new Date(book.update_at).toLocaleDateString()}
-      </DateInfo>
-    </Card>
+    <CardWrapper
+      onClick={() => {
+        console.log(book.id);
+        navigate(`/books/${book.id}`, { state: { book } });
+      }}
+    >
+      <CardInner>
+        <CardFront>
+          <CardImage
+            style={{
+              backgroundImage: `url(${book.cover})`,
+              backgroundSize: "cover",
+            }}
+          />
+          <TitleHashtag>
+            <Title>{book.title}</Title>
+            <HashtagWrapper>
+              {(book.hashTags || []).map((tag, idx) => (
+                <Hashtag key={`hashtag:${book.id}-${idx}`}>
+                  # {tag.tagName}
+                </Hashtag>
+              ))}
+            </HashtagWrapper>
+          </TitleHashtag>
+          <CreateInfo>
+            <Author>
+              {book.author ? `저자: ${book.author}` : "저자 정보 없음"}
+            </Author>
+            <CreateDate>
+              {book.pubdate
+                ? (() => {
+                    const str = book.pubdate.toString();
+                    if (str.length === 8) {
+                      return `${str.slice(0, 4)}.${str.slice(4, 6)}.${str.slice(
+                        6,
+                        8
+                      )}`;
+                    } else if (str.length === 6) {
+                      return `${str.slice(0, 4)}.${str.slice(4, 6)}`;
+                    } else if (str.length === 4) {
+                      return str;
+                    }
+                    return str;
+                  })()
+                : "출간일 정보 없음"}
+            </CreateDate>
+          </CreateInfo>
+        </CardFront>
+        <CardBack>
+          <Content>{book.contents}</Content>
+        </CardBack>
+      </CardInner>
+    </CardWrapper>
   );
 };
 

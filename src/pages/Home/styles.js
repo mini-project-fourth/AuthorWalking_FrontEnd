@@ -8,22 +8,29 @@ export const SafeView = styled.div`
   `;
 export const Title = styled.h1`
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 500;
   margin: 18px 0px;
   text-align: center;
   align-self: flex-start;
 `;
 export const CardContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  juistify-content: center;
   align-items: center;
-  padding: 0px 12px;
+  padding: 0px 20px;
 `;
 export const CardRow = styled.div`
   width: 100%;
-  justify-content: start;
   display: flex;
-  gap: 70px;
-  margin-bottom: 20px;
+  justify-content: flex-start;
+  gap: 24px;
+  margin-bottom: 24px;
 `;
+
+export const BookCountInfo = styled.p`
+  width: 100%;
+  color:rgb(108, 108, 108);
+  font-weight: 500;
+`
